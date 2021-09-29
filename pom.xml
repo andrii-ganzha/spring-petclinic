@@ -384,4 +384,12 @@
     </profile>
   </profiles>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/andrii-ganzha/spring-petclinic</url>
+    </repository>
+  </distributionManagement>
+
 </project>
