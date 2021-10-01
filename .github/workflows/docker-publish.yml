@@ -25,11 +25,11 @@ jobs:
       packages: write
 
     steps:
-      - name: Build app
+        
+      - uses: actions/checkout@v2
+      - name: bild app
         run: ./mvnw package
         
-      - name: Checkout repository
-        uses: actions/checkout@v2
         
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
