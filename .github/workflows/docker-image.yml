@@ -17,6 +17,8 @@ jobs:
     - name: Build the Docker image
       run: |
         ls -la
+        ./mvnw package
+        ls -la
         docker build . --file Dockerfile --tag my-image-name:$(date +%s)
         ls -la
         
