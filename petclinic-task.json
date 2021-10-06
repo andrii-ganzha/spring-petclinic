@@ -1,7 +1,4 @@
-{
-  "ipcMode": null,
-  "executionRoleArn": null,
-  "containerDefinitions": [
+[
     {
       "dnsSearchDomains": null,
       "environmentFiles": null,
@@ -46,35 +43,6 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "petclinic-task"
+      "name": "tf-petclinic-task"
     }
-  ],
-  "placementConstraints": [],
-  "memory": null,
-  "taskRoleArn": null,
-  "compatibilities": [
-    "EXTERNAL",
-    "EC2"
-  ],
-  "taskDefinitionArn": "arn:aws:ecs:eu-central-1:273714934666:task-definition/petclinic-task:1",
-  "family": "petclinic-task",
-  "requiresAttributes": [
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    }
-  ],
-  "pidMode": null,
-  "requiresCompatibilities": [
-    "EC2"
-  ],
-  "networkMode": null,
-  "cpu": null,
-  "revision": 1,
-  "status": "ACTIVE",
-  "inferenceAccelerators": null,
-  "proxyConfiguration": null,
-  "volumes": []
-}
+  ]
