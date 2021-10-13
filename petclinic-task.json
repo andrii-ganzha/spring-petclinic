@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::273714934666:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::273714934666:role/ECSTaskExecutionRolePolicy-Demo",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
