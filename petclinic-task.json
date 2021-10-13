@@ -1,11 +1,19 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::273714934666:role/ECSTaskExecutionRolePolicy-Demo",
+  "executionRoleArn": "arn:aws:iam::273714934666:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
       "environmentFiles": null,
-      "logConfiguration": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/application1",
+          "awslogs-region": "eu-central-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
       "entryPoint": null,
       "portMappings": [
         {
@@ -16,7 +24,7 @@
       ],
       "command": null,
       "linuxParameters": null,
-      "cpu": 256,
+      "cpu": 0,
       "environment": [],
       "resourceRequirements": null,
       "ulimits": null,
@@ -25,11 +33,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 512,
-      "memoryReservation": null,
+      "memory": null,
+      "memoryReservation": 500,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "273714934666.dkr.ecr.eu-central-1.amazonaws.com/petclinic_repository:ff112f3f13985ffcfed2b002309706eda3abf724",
+      "image": "273714934666.dkr.ecr.eu-central-1.amazonaws.com/petclinic_repository:b97312c32ceb2ce9accd499d87da194198bd84fd",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -46,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "tf-petclinic-task2"
+      "name": "tf-petclininc-task3"
     }
   ],
   "placementConstraints": [],
@@ -56,14 +64,38 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:eu-central-1:273714934666:task-definition/tf-petclinic-task2:1",
-  "family": "tf-petclinic-task2",
+  "taskDefinitionArn": "arn:aws:ecs:eu-central-1:273714934666:task-definition/application1:1",
+  "family": "application1",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
     {
       "targetId": null,
