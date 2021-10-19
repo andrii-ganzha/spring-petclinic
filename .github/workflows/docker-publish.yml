@@ -16,6 +16,11 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      MYSQL_USER : ${{ secrets.MYSQL_USER }}
+      MYSQL_PASS : ${{ secrets.MYSQL_PASS }}
+      MYSQL_URL : ${{ secrets.MYSQL_URL }}
+      
 
     steps:
         
@@ -35,7 +40,7 @@ jobs:
 
       
       - name: Bild app
-        run: ./mvnw package
+        run: mvn spring-boot:run -Dspring-boot.run.profiles=mysql
         
         
       - name: Build and push Docker image
