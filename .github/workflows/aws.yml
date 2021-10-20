@@ -67,7 +67,7 @@ jobs:
       with:
         task-definition: ${{ env.ECS_TASK_DEFINITION }}
         container-name: ${{ env.CONTAINER_NAME }}
-        image: ${{ steps.login-ecr.outputs.registry }}/petclinic_repository:${{ github.sha }}
+        image: ${{ steps.login-ecr.outputs.registry }}/petclinic_repository:a1281084ead6ab580e796ed15e8e19c90da295d0
         environment-variables:
           MYSQL_URL="${{secrets.MYSQL_URL}}"
           MYSQL_USER="${{secrets.MYSQL_USER}}"
