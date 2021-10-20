@@ -25,7 +25,11 @@
       "command": null,
       "linuxParameters": null,
       "cpu": 0,
-      "environment": [],
+      "environment": [
+        {"name" : "MYSQL_URL", "value" : "${aws_ssm_parameter.mysql_url.value}"},
+        {"name" : "MYSQL_USER", "value" : "${aws_ssm_parameter.mysql_pass.value}"},
+        {"name" : "MYSQL_PASS", "value" : "${aws_ssm_parameter.mysql_user.value}"}
+      ],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
