@@ -26,9 +26,9 @@
       "linuxParameters": null,
       "cpu": 0,
       "environment": [
-        {"name" : "MYSQL_URL", "value" : "${aws_ssm_parameter.mysql_url.value}"},
-        {"name" : "MYSQL_USER", "value" : "${aws_ssm_parameter.mysql_pass.value}"},
-        {"name" : "MYSQL_PASS", "value" : "${aws_ssm_parameter.mysql_user.value}"}
+        {"name" : "MYSQL_URL", "value" : "jdbc:mysql://tf-petclininc-db.ctkrneelwtgi.eu-central-1.rds.amazonaws.com:3306/petclinic?allowPublicKeyRetrieval=true&useSSL=false"},
+        {"name" : "MYSQL_USER", "value" : "admin"},
+        {"name" : "MYSQL_PASS", "value" : "password"}
       ],
       "resourceRequirements": null,
       "ulimits": null,
