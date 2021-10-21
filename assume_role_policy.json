@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "sts:AssumeRole",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:BatchGetImage",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetAuthorizationToken"
+            ]
+        }
+    ],
+    "Principal": [
+        {
+            "Type": [
+                "Service"
+            ],
+            "Identifiers" : [
+                "ecs-task.amazonaws.com"
+            ]
+        }
+    ]
+}
