@@ -12,5 +12,14 @@ pipeline {
                 '''
             }
         }
+        
+        stage('Start the application') {
+          steps {
+            sh '''
+            terraform init
+            terraform apply --auto-approve
+            '''
+          }
+        }
     }
 }
