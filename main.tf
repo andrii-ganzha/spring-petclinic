@@ -9,8 +9,8 @@ resource "aws_ecs_service" "tf-petclinic-service" {
     desired_count = 1
     launch_type = "FARGATE"
     network_configuration {
-        subnets = ["subnet-0d877999e486e3632", "subnet-0ea75832f42ff97ef"]
-        security_groups = ["sg-0af86a9fd113c4699"]
+        subnets = ["subnet-05a79ca4f8ca098a7", "subnet-04580d47c361b9236"]
+        security_groups = ["sg-00cd962ecbb43f6b5"]
         assign_public_ip = true
     }
 }
