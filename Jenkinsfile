@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        terraform 'myterraform'
+      terraform 'terraform-11'
     }
     stages {
         stage('Create task-definition') {
