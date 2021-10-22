@@ -16,6 +16,7 @@ pipeline {
         stage('Start the application') {
           steps {
             sh '''
+            which terraform
             terraform init
             terraform apply --auto-approve
             '''
