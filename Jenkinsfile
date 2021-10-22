@@ -19,13 +19,11 @@ pipeline {
         
         stage('Start the application') {
           steps {
-            whithAWS(credentials: 'aws_ecsecrec2', region: 'eu-central-1'){
               sh '''
               which terraform
               terraform init
               terraform apply --auto-approve
               '''
-            }
           }
         }
     }
