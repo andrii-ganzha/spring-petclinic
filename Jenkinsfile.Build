@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    environment {
+        registry = "$petclinic_registry/petclinic_repository:latest"
+    }
+
+    stages {
+        stage('Docker Build') {
+            steps {
+                sh "docker build -t petclinic_repository:latest ."
+            }
+        }
+        
+        stage('ECR Login') {
+          steps {
+              withAWS(credentials:'aws_ecsecrec2') {
+                  script {
+                      def login = ecrLogin()
+                      sh "${login}"
+                  }
+              }
+          }
+        }
+
+        stage ("docker PUSH") {
+            steps {
+                sh "docker push ${registry}"
+            }
+        }
+    }
+}
