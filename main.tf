@@ -12,9 +12,7 @@ provider "aws" {
 }
 
 data "aws_security_group" "petclinic_sg_final" {
-    tags = {
-        Name = "petclinic_sg_final"
-    }
+    name = "petclinic_sg_final"
 }
 
 data "aws_subnet" "tf_petclinic_subneta" {
