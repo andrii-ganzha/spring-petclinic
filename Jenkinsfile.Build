@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Docker Build') {
             steps {
+                sh "which docker"
                 sh "docker build -t petclinic_repository:latest ."
             }
         }
