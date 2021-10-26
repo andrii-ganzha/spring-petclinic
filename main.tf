@@ -7,11 +7,27 @@ terraform {
     }
 }
 
-
-
 provider "aws" {
     region = "eu-central-1"
 }
+
+data "aws_security_group" "petclinic_sg_final" {
+    tags = {
+        Name = "petclinic_sg_final"
+    }
+}
+
+data "aws_subnet" "tf_petclinic_subneta" {
+    tags = {
+        Name = "tf_petclinic_subneta"
+    }
+} 
+
+data "aws_subnet" "tf_petclinic_subnetb" {
+    tags = {
+        Name = "tf_petclinic_subnetb"
+    }
+} 
 
 resource "aws_ecs_service" "tf-petclinic-service" {
     name = "tf-petclinic-service"
@@ -20,8 +36,8 @@ resource "aws_ecs_service" "tf-petclinic-service" {
     desired_count = 1
     launch_type = "FARGATE"
     network_configuration {
-        subnets = ["subnet-05a79ca4f8ca098a7", "subnet-04580d47c361b9236"]
-        security_groups = ["sg-00cd962ecbb43f6b5"]
+        subnets = [data.aws_subnet.tf_petclinic_subneta.id, data.aws_subnet.tf_petclinic_subnetb.id]
+        security_groups = data.aws_security_group.petclinic_sg_final.id
         assign_public_ip = true
     }
 }
