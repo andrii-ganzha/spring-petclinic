@@ -35,7 +35,7 @@ resource "aws_ecs_service" "tf-petclinic-service" {
     launch_type = "FARGATE"
     network_configuration {
         subnets = [data.aws_subnet.tf_petclinic_subneta.id, data.aws_subnet.tf_petclinic_subnetb.id]
-        security_groups = data.aws_security_group.petclinic_sg_final.id
+        security_groups = [data.aws_security_group.petclinic_sg_final.id]
         assign_public_ip = true
     }
 }
