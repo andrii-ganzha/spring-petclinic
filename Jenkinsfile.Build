@@ -8,6 +8,11 @@ pipeline {
     }
 
     stages {
+        stage('Build App') {
+            steps {
+                sh './mvnw package'
+            }
+        }
         stage('Docker Build') {
             steps {
                 sh "which docker"
