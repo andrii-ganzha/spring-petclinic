@@ -20,16 +20,20 @@ pipeline {
             }
         }
         
-        stage('ECR Login adn Push') {
+        stage('ECR Login') {
           steps {
               withAWS(region:'eu-central-1', credentials:'aws_ecsecrec2') {
                   script {
                       def login = ecrLogin()
                       sh "${login}"
-                      sh "docker push ${registry}"
                   }
               }
           }
+        }
+        stage('Docker push') {
+            steps {
+                sh "docker push ${registry}"
+            }
         }
     }
 }
