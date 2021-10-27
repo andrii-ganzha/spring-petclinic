@@ -22,7 +22,7 @@ pipeline {
         
         stage('ECR Login adn Push') {
           steps {
-              withAWS(credentials:'aws_ecsecrec2') {
+              withAWS(region:'eu-central-1', credentials:'aws_ecsecrec2') {
                   script {
                       def login = ecrLogin()
                       sh "${login}"
