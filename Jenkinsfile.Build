@@ -20,7 +20,7 @@ pipeline {
             }
         }
         
-        stage('ECR Login') {
+        stage('ECR Login adn Push') {
           steps {
               withAWS(credentials:'aws_ecsecrec2') {
                   script {
@@ -30,12 +30,6 @@ pipeline {
                   }
               }
           }
-        }
-
-        stage ("docker PUSH") {
-            steps {
-
-            }
         }
     }
 }
