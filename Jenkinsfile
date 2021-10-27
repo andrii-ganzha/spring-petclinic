@@ -3,10 +3,6 @@ pipeline {
     tools {
       terraform 'terraform-1.0.5'
     }
-    environment {
-      AWS_ACCESS_KEY_ID = "$aws_access_key"
-      AWS_SECRET_ACCESS_KEY = "$aws_secret_key"
-    }
     stages {
         stage('Create task-definition') {
             steps {
@@ -19,11 +15,15 @@ pipeline {
         
         stage('Start the application') {
           steps {
-              sh '''
-              which terraform
-              terraform init
-              terraform apply --auto-approve
-              '''
+              withAWS(region:'eu-central-1', credentials:'aws_ecsecrec2') {
+                script {
+                  sh '''
+                  which terraform
+                  terraform init
+                  terraform apply --auto-approve
+                  '''
+                }
+              }
           }
         }
     }
