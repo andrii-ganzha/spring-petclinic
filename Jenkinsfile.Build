@@ -26,6 +26,7 @@ pipeline {
                   script {
                       def login = ecrLogin()
                       sh "${login}"
+                      sh "docker push ${registry}"
                   }
               }
           }
@@ -33,7 +34,7 @@ pipeline {
 
         stage ("docker PUSH") {
             steps {
-                sh "docker push ${registry}"
+
             }
         }
     }
