@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    tools {
+      terraform 'terraform-1.0.5'
+    }   
+        stage('Start the application') {
+          steps {
+              withAWS(region:'eu-central-1', credentials:'aws_ecsecrec2') {
+                script {
+                  sh '''
+                  terraform init
+                  terraform destroy --auto-approve
+                  '''
+                }
+              }
+          }
+        }
+    }
+}
