@@ -8,8 +8,9 @@ pipeline {
               withAWS(region:'eu-central-1', credentials:'aws_ecsecrec2') {
                 script {
                   sh '''
+                  which terraform
                   terraform init
-                  terraform destroy --auto-approve
+                  terraform apply --auto-approve
                   '''
                 }
               }
