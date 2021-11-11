@@ -40,6 +40,18 @@ resource "aws_ecs_service" "tf-petclinic-service" {
     }
 }
 
+resource"aws_cloudwatch_log_group""testapp_log_group" {
+    name = "/ecs/testapp"
+    retention_in_days = 30
+    tags = {
+        Name = "cw-log-group"
+        }
+    }
+resource"aws_cloudwatch_log_stream""myapp_log_stream" {
+    name = "test-log-stream"
+    log_group_name = aws_cloudwatch_log_group.testapp_log_group.name
+}
+
 resource "aws_ecs_task_definition" "tf-petclinic-task2" {
     family = "tf-petclinic-task3"
     container_definitions = "${file("petclinic-task.json")}"
